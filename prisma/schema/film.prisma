@@ -6,4 +6,5 @@ model Film {
   mainLanguage   String   
   productionCountry String  
   ageRating      String   
+  genre Genre[]
 }
