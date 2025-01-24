@@ -1,10 +1,16 @@
 model Film {
-  id                Int @id @default(autoincrement())
-  title             String  
-  rating            Float?   
-  releaseYear       Int      
-  mainLanguage      String   
-  productionCountry String  
-  ageRating         String   
+  id                Int          @id @default(autoincrement())
+  title             String
+  rating            Float?
+  releaseYear       Int
+  mainLanguage      String
+  productionCountry String
+  ageRating         String
   genre             Genre[]
+  shortDescription  String
+  additionalInfo    String?
+  userReviews       UserReview[]
+  interestingFacts  String?
+  movieStills       Image[]
+  actors            Actor[]
 }
