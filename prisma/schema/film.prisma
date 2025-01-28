@@ -6,11 +6,13 @@ model Film {
   mainLanguage      String
   productionCountry String
   ageRating         String
-  genre             Genre[]
+  runtime           Int
+  poster            String
   shortDescription  String
   additionalInfo    String?
-  userReviews       UserReview[]
   interestingFacts  String?
+  userReviews       UserReview[]
+  genres            Genre[]
   movieStills       Image[]
   actors            Actor[]
 }

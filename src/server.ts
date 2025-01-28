@@ -15,8 +15,18 @@ async function getFilms() {
     return films
 }
 
+async function getGenres() {
+    const genres = await prisma.genre.findMany()
+    console.log(genres)
+    return genres
+}
+
 app.get('/api/movies', async (req, res) => {
     res.json(await getFilms());
+});
+
+app.get('/api/genres', async (req, res) => {
+    res.json(await getGenres());
 });
 
 app.listen(PORT, HOST, () => {
