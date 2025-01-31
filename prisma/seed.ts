@@ -16,7 +16,7 @@ const movieGenresSelect = [
 ];
 
 async function main() {
-    await prisma.film.create({
+    await prisma.movie.create({
         data: {
             title: "The Film",
             rating: 4.9,
@@ -24,6 +24,7 @@ async function main() {
             mainLanguage: "English",
             productionCountry: "USA",
             ageRating: "PG-13",
+            runtime: 142,
             shortDescription: "The film description",
             additionalInfo: "no additional info",
             interestingFacts: "no facts",
@@ -38,12 +39,12 @@ async function main() {
         })
     }
 
-    await prisma.film.update({
+    await prisma.movie.update({
         where: {
             id: 1
         },
         data: {
-            genre: {
+            genres: {
                 set: [{ id: 1 }, { id: 2 }, { id: 3 }]
             }
         }

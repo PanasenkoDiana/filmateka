@@ -9,10 +9,10 @@ const PORT = 8000;
 
 app.use(cors());
 
-async function getFilms() {
-    const films = await prisma.film.findMany()
-    console.log(films)
-    return films
+async function getMovies() {
+    const movies = await prisma.movie.findMany()
+    console.log(movies)
+    return movies
 }
 
 async function getGenres() {
@@ -22,7 +22,7 @@ async function getGenres() {
 }
 
 app.get('/api/movies', async (req, res) => {
-    res.json(await getFilms());
+    res.json(await getMovies());
 });
 
 app.get('/api/genres', async (req, res) => {

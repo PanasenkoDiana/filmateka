@@ -3,5 +3,5 @@ model Actor {
   name    String // Ім'я
   surname String? // Призвище
   photo   String? // Фото
-  films   Film[] // Зв'язок many to many з фільмом
+  movie   Movie[] // Зв'язок many to many з фільмом
 }
