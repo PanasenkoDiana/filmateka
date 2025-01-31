@@ -1,7 +1,6 @@
 import { prisma } from "./prismaClient"
 
 const movieGenresSelect = [
-    "All Genres",
     "Action",
     "Adventure",
     "Crime",
@@ -16,6 +15,14 @@ const movieGenresSelect = [
 ];
 
 async function main() {
+    for (let i = 0; i < movieGenresSelect.length; i++) {
+        await prisma.genre.create({
+            data: {
+                name: movieGenresSelect[i]
+            }
+        })
+    }
+
     await prisma.movie.create({
         data: {
             title: "The Film",
@@ -25,27 +32,15 @@ async function main() {
             productionCountry: "USA",
             ageRating: "PG-13",
             runtime: 142,
+            poster: "https://www.sonypictures.co.uk/sites/unitedkingdom/files/styles/max_n_x_365_/public/2024-10/2481_SP_VENOM_POSTER_1-Sheet_OutNow.jpg?itok=cyDlYZBK",
             shortDescription: "The film description",
             additionalInfo: "no additional info",
             interestingFacts: "no facts",
-        }
-    })
-    
-    for (let i = 0; i < movieGenresSelect.length; i++) {
-        await prisma.genre.create({
-            data: {
-                name: movieGenresSelect[i]
-            }
-        })
-    }
-
-    await prisma.movie.update({
-        where: {
-            id: 1
-        },
-        data: {
             genres: {
-                set: [{ id: 1 }, { id: 2 }, { id: 3 }]
+                connect: [
+                    { id: 1 },
+                    { id: 2 }
+                ]
             }
         }
     })
