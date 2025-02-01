@@ -10,7 +10,11 @@ const PORT = 8000;
 app.use(cors());
 
 async function getMovies() {
-    const movies = await prisma.movie.findMany()
+    const movies = await prisma.movie.findMany({
+        include: {
+            genres: true
+        }
+    })
     console.log(movies)
     return movies
 }

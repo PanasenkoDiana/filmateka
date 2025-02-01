@@ -37,9 +37,15 @@ async function main() {
             additionalInfo: "no additional info",
             interestingFacts: "no facts",
             genres: {
-                connect: [
-                    { id: 1 },
-                    { id: 2 }
+                connectOrCreate: [
+                    {
+                        create: { name: 'Action' },
+                        where: { id: 1 },
+                    },
+                    {
+                        create: { name: 'History' },
+                        where: { id: 6 },
+                    }
                 ]
             }
         }
