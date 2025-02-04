@@ -1,37 +1,18 @@
 import express, { Express, Request, Response, Router } from 'express'
-import { prisma } from "../prisma/prismaClient"
+
+import moviesRouter from "./MoviesApp/moviesRouter"
+import genresRouter from "./GenresApp/genresRouter"
 
 const cors = require("cors")
 
-const app = express();
-const HOST = 'localhost';
-const PORT = 8000;
+const app = express()
+const HOST = 'localhost'
+const PORT = 8000
 
-app.use(cors());
+app.use(cors())
 
-async function getMovies() {
-    const movies = await prisma.movie.findMany({
-        include: {
-            genres: true
-        }
-    })
-    console.log(movies)
-    return movies
-}
-
-async function getGenres() {
-    const genres = await prisma.genre.findMany()
-    console.log(genres)
-    return genres
-}
-
-app.get('/api/movies', async (req, res) => {
-    res.json(await getMovies());
-});
-
-app.get('/api/genres', async (req, res) => {
-    res.json(await getGenres());
-});
+app.use("/", moviesRouter)
+app.use("/", genresRouter)
 
 app.listen(PORT, HOST, () => {
     console.log(`Server running at http://${HOST}:${PORT}`);
