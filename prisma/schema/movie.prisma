@@ -1,4 +1,4 @@
-model Film {
+model Movie {
   id                Int          @id @default(autoincrement())
   title             String
   rating            Float?
@@ -6,11 +6,13 @@ model Film {
   mainLanguage      String
   productionCountry String
   ageRating         String
-  genre             Genre[]
-  shortDescription  String
+  runtime           Int
+  poster            String?
+  shortDescription  String?
   additionalInfo    String?
-  userReviews       UserReview[]
   interestingFacts  String?
+  userReviews       UserReview[]
   movieStills       Image[]
   actors            Actor[]
+  genres            Genre[]  @relation("MovieGenres")
 }

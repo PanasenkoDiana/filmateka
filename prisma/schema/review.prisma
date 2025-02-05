@@ -1,9 +1,9 @@
 model UserReview {
-  id     Int    @id @default(autoincrement())
-  filmId Int
-  userId Int
-  review String
-  rating Float
-  Film   Film   @relation(fields: [filmId], references: [id])
-  User   User   @relation(fields: [userId], references: [id])
+  id      Int    @id @default(autoincrement())
+  movieId Int
+  userId  Int
+  review  String
+  rating  Float
+  Movie   Movie  @relation(fields: [movieId], references: [id])
+  User    User   @relation(fields: [userId], references: [id])
 }
