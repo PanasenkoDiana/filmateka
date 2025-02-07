@@ -10,8 +10,29 @@ async function getAllMovies(req: Request, res: Response) {
     }
 }
 
+async function getMovieById(req: Request, res: Response) {
+    let id: number = Number(req.params.id)
+    const context = await moviesService.getMovieById(id)
+    if (context.status == "error") {
+        res.send(context.message)
+    } else {
+        res.json(context.data)
+    }
+}
+
+async function getAllRecentlyViewedFilm(req: Request, res: Response) {
+    const context = await moviesService.getAllRecentlyViewedFilm()
+    if (context.status == "error") {
+        res.send(context.message)
+    } else {
+        res.json(context.data)
+    }
+}
+
 const functions = {
-    getAllMovies: getAllMovies
+    getAllMovies: getAllMovies,
+    getMovieById: getMovieById,
+    getAllRecentlyViewedFilm: getAllRecentlyViewedFilm
 }
 
 export default functions

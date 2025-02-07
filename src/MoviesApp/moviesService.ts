@@ -5,12 +5,17 @@ interface IMoviesSuccess {
     data: any[]
 }
 
-interface IMoviesError {
+interface IMovieSuccess {
+    status: 'success';
+    data: any
+}
+
+interface IError {
     status: 'error';
     message: string
 }
 
-async function getAllMovies(): Promise< IMoviesSuccess | IMoviesError > {
+async function getAllMovies(): Promise< IMoviesSuccess | IError > {
     const movies = await moviesRepository.getAllMovies()
     if (!movies){
         return { status: 'error', message: 'Movies not found' }
@@ -18,8 +23,26 @@ async function getAllMovies(): Promise< IMoviesSuccess | IMoviesError > {
     return { status: 'success', data: movies }
 }
 
+async function getMovieById(id: number): Promise< IMovieSuccess | IError > {
+    const movie = await moviesRepository.getMovieById(id)
+    if (!movie){
+        return { status: 'error', message: `Movie with id: ${id} not found`}
+    }
+    return { status: 'success', data: movie }
+}
+
+async function getAllRecentlyViewedFilm(): Promise< IMoviesSuccess | IError > {
+    const movies = await moviesRepository.getAllMovies()
+    if (!movies){
+        return { status: 'error', message: 'Recently viewed movies not found' }
+    }
+    return { status: 'success', data: movies }
+}
+
 const functions = {
-    getAllMovies: getAllMovies
+    getAllMovies: getAllMovies,
+    getMovieById: getMovieById,
+    getAllRecentlyViewedFilm: getAllRecentlyViewedFilm
 }
 
 export default functions
