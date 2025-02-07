@@ -31,9 +31,18 @@ async function getMovieById(id: number): Promise< IMovieSuccess | IError > {
     return { status: 'success', data: movie }
 }
 
+async function getAllRecentlyViewedFilm(): Promise< IMoviesSuccess | IError > {
+    const movies = await moviesRepository.getAllMovies()
+    if (!movies){
+        return { status: 'error', message: 'Recently viewed movies not found' }
+    }
+    return { status: 'success', data: movies }
+}
+
 const functions = {
     getAllMovies: getAllMovies,
-    getMovieById: getMovieById
+    getMovieById: getMovieById,
+    getAllRecentlyViewedFilm: getAllRecentlyViewedFilm
 }
 
 export default functions

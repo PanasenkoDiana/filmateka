@@ -33,9 +33,25 @@ async function getMovieById(id: number) {
     }
 }
 
+async function getAllRecentlyViewedFilm() {
+    try {
+        const movies = await prisma.recentlyViewedFilm.findMany({
+            include: {
+                Movie: true
+            }
+        })
+        console.log(movies)
+        return movies
+    } catch (error) {
+        console.error("Error getMovies: ", error);
+        throw error;
+    }
+}
+
 const functions = {
     getAllMovies: getAllMovies,
-    getMovieById: getMovieById
+    getMovieById: getMovieById,
+    getAllRecentlyViewedFilm: getAllRecentlyViewedFilm
 }
 
 export default functions
