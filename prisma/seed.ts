@@ -50,6 +50,20 @@ async function main() {
             }
         }
     })
+
+    await prisma.person.create({
+        data: {
+            name: "Dwayne",
+            surname: "Johnson",
+            actor: true,
+            director: false,
+            photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Dwayne_Johnson_2%2C_2013.jpg/279px-Dwayne_Johnson_2%2C_2013.jpg",
+            description: "Двейн Ду́глас (Ду́ґлас) Джо́нсон (англ. Dwayne Douglas Johnson; нар. 2 травня 1972, Гейвард, Каліфорнія), спортивне та сценічне прізвисько Скеля (англ. The Rock) — американо-канадійський[6] актор, а також відомий реслер. З 1996 року по 2004 рік виступав в World Wrestling Federation/Entertainment (WWF/E). З 2011 року знову працює в WWE, виступаючи в основному на бренді Raw. Є восьмиразовим чемпіоном WWF/E, дворазовим чемпіоном у важкій вазі WCW, дворазовим інтерконтинентальним чемпіоном WWF і п'ятикратним чемпіоном командним WWF. Також є шостим чемпіоном Потрійної корони і переможцем Королівської битви 2000 року.",
+            movies: {
+                connect: { id: 1 }
+            }
+        }
+    })
 }
 
 main()

@@ -1,0 +1,10 @@
+model Person {
+  id          Int     @id @default(autoincrement())
+  name        String // Ім'я
+  surname     String? // Призвище
+  actor       Boolean
+  director    Boolean
+  photo       String? // Фото
+  description String?
+  movies      Movie[] // Зв'язок many to many з фільмом
+}
