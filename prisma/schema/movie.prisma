@@ -13,7 +13,7 @@ model Movie {
   interestingFacts   String?
   userReviews        UserReview[]
   movieStills        Image[]
-  actors             Actor[]
+  person             Person[]
   genres             Genre[]              @relation("MovieGenres")
   RecentlyViewedFilm RecentlyViewedFilm[]
 }

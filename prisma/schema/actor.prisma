@@ -1,7 +1,0 @@
-model Actor {
-  id      Int     @id @default(autoincrement())
-  name    String // Ім'я
-  surname String? // Призвище
-  photo   String? // Фото
-  movie   Movie[] // Зв'язок many to many з фільмом
-}
