@@ -2,7 +2,11 @@ import { Prisma } from "../../prisma/prismaClient"
 
 async function getAllPersons() {
     try {
-        const data = await Prisma.person.findMany()
+        const data = await Prisma.person.findMany({
+            include: {
+                roles: true
+            }
+        })
         console.log(data)
         return data
     } catch (error) {
@@ -18,7 +22,8 @@ async function getPersonById(id: number) {
                 id: id
             },
             include: {
-                movies: true
+                movies: true,
+                roles: true
             }
         })
         console.log(person)

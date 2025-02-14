@@ -1,14 +1,20 @@
 model Person {
-  id          Int        @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   name        String // Ім'я
   surname     String? // Призвище
-  role        PersonRole
+  roles       PersonRole[]
   photo       String? // Фото
   description String?
   movies      Movie[] // Зв'язок many to many з фільмом
 }
 
-enum PersonRole {
+model PersonRole {
+  id     Int      @id @default(autoincrement())
+  role   Role
+  person Person[]
+}
+
+enum Role {
   ACTOR
   DIRECTOR
 }
