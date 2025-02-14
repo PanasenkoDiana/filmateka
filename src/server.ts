@@ -1,4 +1,4 @@
-import express, { Express, Request, Response, Router } from 'express'
+import express from 'express'
 
 import moviesRouter from "./MoviesApp/moviesRouter"
 import genresRouter from "./GenresApp/genresRouter"
@@ -12,9 +12,7 @@ const PORT = 8000
 
 app.use(cors())
 
-app.use("/api", moviesRouter)
-app.use("/api", genresRouter)
-app.use("/api", personRouter)
+app.use("/api", moviesRouter, genresRouter, personRouter)
 
 app.listen(PORT, HOST, () => {
     console.log(`Server running at http://${HOST}:${PORT}`);
