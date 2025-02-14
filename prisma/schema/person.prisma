@@ -1,10 +1,14 @@
 model Person {
-  id          Int     @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   name        String // Ім'я
   surname     String? // Призвище
-  actor       Boolean
-  director    Boolean
+  role        PersonRole
   photo       String? // Фото
   description String?
   movies      Movie[] // Зв'язок many to many з фільмом
+}
+
+enum PersonRole {
+  ACTOR
+  DIRECTOR
 }
