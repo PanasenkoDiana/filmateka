@@ -17,3 +17,4 @@ model Movie {
   genres              Genre[]               @relation("MovieGenres")
   recentlyViewedMovie RecentlyViewedMovie[]
 }
+ 

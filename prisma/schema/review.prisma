@@ -7,3 +7,4 @@ model UserReview {
   movie   Movie  @relation(fields: [movieId], references: [id])
   user    User   @relation(fields: [userId], references: [id])
 }
+ 
